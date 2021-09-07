@@ -1,0 +1,16 @@
+lowest precision = []
+
+for fp in lowest_precision:
+
+positions_pred = [i for i, x in enumerate(sent_preds) if x==fp]
+
+            if positions_pred == []:
+                continue
+
+            positions_true = [i for i, x in enumerate(sent_true) if x==fp]
+            if len(set(positions_pred) - set(positions_true))>0:
+                print("false positive!", fp)
+                print(set(positions_pred) - set(positions_true))
+                print(sent)
+                print(sent_preds)
+                print("*" * 30)
